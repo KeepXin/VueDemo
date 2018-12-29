@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue测试</title>
+</head>
+<body>
+
+<div id="app">{{content}}</div>
+
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	
+
+	var app = new Vue({
+
+		el:'#app',
+		data:{
+			content:'why'
+		}
+
+	});
+
+	setTimeout(function(){
+		app.$data.content = '8888';
+	},2000)
+
+</script>
+
+</body>
+</html>

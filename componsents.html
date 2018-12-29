@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todolist</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+	
+<!-- input 双向绑定 -->
+<input type="text" v-model="inputValue" name="">
+<button v-on:click="handleBtnClick">提交</button>
+
+<ul>
+	<!-- <li v-for="item in list">{{item}}</li> -->
+
+	
+	<todo-item v-bind:content="item" v-bind:index="index" v-for="(item,index) in list" @delete='handleItemDelete'></todo-item>
+
+</ul>
+
+</div>
+
+<script type="text/javascript">
+
+
+	//全局组件
+	/*Vue.component("TodoItem",{
+		props:['content'],
+		template:"<li>{{content}}</li>"
+	})
+	*/
+
+	//局部组件
+	var TodoItem = {
+		props:['content','index'],
+		template:"<li @click='handleItemClick'>{{content}}</li>",
+		methods:{
+			handleItemClick:function(){
+				this.$emit("delete",this.index)
+			}
+		}
+	}
+
+	
+	//mv vm设计模式  只需要关注视图层和数局层可以
+
+	//m    
+	//v
+	//vm vue里面封装
+
+	var app = new Vue({
+		el:'#app',
+		components:{
+			TodoItem:TodoItem
+		},
+		data:{
+			list:[],
+			inputValue:''
+		},
+		methods:{
+			handleBtnClick:function(){
+				this.list.push(this.inputValue);
+				this.inputValue = '';
+			},
+			handleItemDelete:function(index){
+				this.list.splice(index,1);
+			}
+		}
+	})
+
+
+</script>
+
+
+</body>
+</html>
