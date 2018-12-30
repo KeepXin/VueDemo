@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>computed</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+	<div id="app">{{fullName}}</div>
+	<script type="text/javascript">
+		
+
+		var vm = new Vue({
+
+			el:"#app",
+			data:{
+				firstName:"Dell",
+				lastName:"Lee"
+			},
+			computed:{
+				fullName:{
+					get:function(){
+						return this.firstName+" "+this.lastName
+					},
+					set:function(value){
+						var arr = value.split(" ");
+						this.lastName = arr[1];
+						this.firstName = arr[0];
+					}
+				}
+			}
+
+		})
+
+	</script>
+
+</body>
+</html>

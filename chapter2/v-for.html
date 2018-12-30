@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-for循环注意</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+	<div id="app">
+
+
+		<!-- 渲染数组  占位符 不会被渲染 -->
+		<template v-for="(item,index) of list" >
+
+
+			<div >
+			
+			{{item.text}} ---- {{item.id}}
+
+			</div>
+
+			<span>
+			
+				{{item.text}} 
+
+			</span>
+
+
+		</template>
+		
+		<hr>
+
+		<!-- 渲染对象 -->
+		<div v-for="(item,key,index) of userinfo">
+			{{key}} ----- {{item}} ---- {{index}} 	
+		</div>
+
+		
+
+	</div>
+
+
+<script type="text/javascript">
+	
+
+	//关于数组动态（变异方法+数组引用+set）
+	//pop  push  shift  unshift  splice sort reverse    通过这些变异方法来动态改变list是可以的
+	//但是通过数组下标来改变是不能来动态改变的
+
+	//关于对象动态
+	//给对象动态添加也是不可以的  
+
+
+	//或者直接改变对象引用(js里面很多都是对象)也是可以的  即直接给数组赋给新值
+
+	//或者通set方法来设置  （既是全局方法也是局部方法）
+
+	/*
+		Vue.set(vm.userinfo,"address","shanghai")
+	*/
+
+	/*
+
+		vm.$set(vm.userinfo,"language","Chinese")
+
+	*/
+
+	var vm = new Vue({
+
+		el:"#app",
+		data:{
+			list:[{
+				id:"33331aeee",
+				text:"hello"
+			}],
+			userinfo:{
+
+				name:"tom",
+				age:28,
+				gender:"male",
+				salary:"secret"
+
+			}
+		}
+
+
+	})
+
+</script>
+
+
+</body>
+</html>
