@@ -8,6 +8,12 @@
 		.activated{
 			color:red;
 		}
+		.class-one{
+
+		}
+		.class-two{
+
+		}
 
 	</style>
 
@@ -16,6 +22,9 @@
 	<div id="app">
 		<!-- class的对象绑定 -->
 		<div @click="handleDivClick" :class="{activated:isActivited}">hello world</div>
+		<div :class="[classOne,classTwo]" >测试下</div>
+		<div :style="styleObj" @click="handleStyleClick" >内联样式</div>
+		<div :style="[styleObj]">ok</div>
 	</div>
 
 	<script type="text/javascript">
@@ -23,11 +32,19 @@
 		var vm = new Vue({
 			el:"#app",
 			data:{
-				isActivited:false
+				isActivited:false,
+				classOne:"class-one",
+				classTwo:'class-two',
+				styleObj:{
+					color:"black"
+				}
 			},
 			methods:{
 				handleDivClick:function(){
 					this.isActivited = !this.isActivited
+				},
+				handleStyleClick:function(){
+					this.styleObj.color = this.styleObj.color === 'black' ? "red" : "black";
 				}
 			}
 		})

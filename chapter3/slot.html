@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+
+	<div id="app">
+		<child>
+			<p>Dell</p>
+		</child>
+	</div>
+
+	<script type="text/javascript">
+
+
+		Vue.component('child',{
+			template:'<div><p>hello</p><slot>默认内容</slot></div>'
+		})
+
+		var vm = new Vue({
+			el:'#app'
+		})
+	</script>
+
+
+</body>
+</html>

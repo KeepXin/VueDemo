@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+
+	<table>
+		<tbody>
+			<tr is="row"></tr>
+			<tr is="row"></tr>
+			<tr is="row"></tr>
+		</tbody>
+	</table>
+	
+</div>
+
+<script type="text/javascript">
+
+
+	Vue.component('row',{
+		/*data:{
+			content:'this is  a row'
+		},*/
+		//上面这个错误  data只能是一个函数
+		data:function(){
+			return {
+				content:"this is a row"
+			}
+		}
+		template:'<tr><td>{{content}}</td></tr>'
+	})
+
+	var vm = new Vue({
+		el:"#app"
+
+
+	})
+</script>
+
+</body>
+</html>

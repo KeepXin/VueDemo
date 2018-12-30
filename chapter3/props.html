@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+
+	<div id="app">
+		<child content="hell333"></child>
+	</div>
+
+	<script type="text/javascript">
+
+
+		Vue.component('child',{
+			props:{
+				// content:String,
+				// content:Number
+				// content:[String,Number]
+				content:{
+					// type:String,
+					// required:true,
+					// default:"default value",
+					validator:function(value){
+						return (value.length > 5)
+					}
+				}
+			},
+			template:"<div>{{content}}</div>"
+		})
+
+		var vm = new Vue({
+			el:'#app'
+		})
+	</script>
+
+
+</body>
+</html>

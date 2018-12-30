@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+
+	<table>
+		<tbody>
+			<!-- tbody里面只能写tr 如果直接写row会报错  -->
+			<!-- <row></row> 这样报错 用下面的is属性来解决 --> 
+			<tr is="row"></tr>
+			<tr is="row"></tr>
+			<tr is="row"></tr>
+		</tbody>
+
+		<!-- select ul 同上 -->
+	</table>
+	
+</div>
+
+<script type="text/javascript">
+
+
+	Vue.component('row',{
+		template:'<tr><td>this is  a row</td></tr>'
+	})
+
+	var vm = new Vue({
+		el:"#app"
+
+
+	})
+</script>
+
+</body>
+</html>
